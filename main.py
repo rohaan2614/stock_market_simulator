@@ -1,8 +1,8 @@
 import pandas as pd
 import os
-from portfolio import Portfolio
+# from portfolio import Portfolio
 from stock import Stock
-from ShareHolder import ShareHolder
+from share_holder import ShareHolder
 
 if __name__ == '__main__':
     PREDICTION_DIR = "data/predictions"
@@ -10,6 +10,21 @@ if __name__ == '__main__':
     
     investor = ShareHolder("Mike", 10000)
     investor.about_me()
+    
+    # Create Stock
+    test_stock = Stock(issuing_corporation="Amazon", 
+                       predicted_returns_file="data/predictions/AMGN_predictions.csv",
+                       actual_prices_file="data/test/AMGN.csv",
+                       required_rate_of_return=0.002)
+    test_stock.about_me()
+    
+    print(f"Actual Prices ({len(test_stock.actual_prices)}) ", test_stock.actual_prices)
+    
+    test_stock.plot_predicted_returns()
+    
+    # print(f"\nPredicted Returns ({len(test_stock.predicted_returns)}) ", test_stock.predicted_returns)
+
+    # for predicted_return in pre
     # stock_names = ['AAPL', 'AXP', 'BA', 'CAT', 'CSCO', 'CVX', 'DOW', 'DIS', 'WBA', 'GS', 'HD', 'IBM', 'INTC', 'JNJ', 'JPM', 'KO', 'MCD', 'MMM', 'MRK', 'MSFT', 'NKE',  'PG', 'TRV', 'UNH',  'VZ', 'V', 'WMT', 'HON', 'AMGN', 'CRM']
     # spend_per_stock = 200
     # money_pool = 6000
